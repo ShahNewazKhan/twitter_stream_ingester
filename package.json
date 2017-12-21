@@ -1,0 +1,11 @@
+{
+  "name": "tweet_stream_ingester",
+  "version": "1.0.0",
+  "description": "Ingest twitter stream & publish to pub_sub",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "info@shahnewazkhan.ca",
+  "license": "ISC"
+}
