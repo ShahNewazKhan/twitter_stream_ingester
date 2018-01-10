@@ -18,6 +18,8 @@ var kafka = require('kafka-node'),
     client = new kafka.Client(),
     producer = new Producer(client);
 
+producer.on('error', function (err) {})
+
 var streamFilter = function(tweet) {
   console.log(chalk.green(tweet.user.screen_name, ' : ' , tweet.text));
   request({
@@ -33,9 +35,13 @@ var streamFilter = function(tweet) {
     
     console.log(body);
 
-    tweet.sentiment = body
-    const dataBuffer = Buffer.from(JSON.stringify(tweet));
-    var attributes = {eventType: 'FINTECH_TWEET'};
+    // tweet.sentiment = body
+    // const dataBuffer = Buffer.from(JSON.stringify(tweet));
+    // var attributes = {eventType: 'FINTECH_TWEET'};
+
+    // producer.send(payloads, function (err, data) {
+    //   console.log(chalk.red(data));
+    // });
 
     // publisher.publish(dataBuffer, attributes)
     // .then((results) => {

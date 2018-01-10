@@ -11,7 +11,11 @@ var client = new Twitter({
   access_token_secret: env.parsed.access_token_secret
 });
 
-client.stream('statuses/filter', { track: 'fintech' }, function (stream) {
-  stream.on('data', streamFilter);
-  stream.on('error', streamError);
+
+producer.on('ready', function () {
+  client.stream('statuses/filter', { track: 'fintech' }, function (stream) {
+    stream.on('data', streamFilter);
+    stream.on('error', streamError);
+  });
 });
+
