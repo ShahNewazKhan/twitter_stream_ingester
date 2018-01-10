@@ -13,27 +13,27 @@ var request = require('request');
 // const publisher = topic.publisher();
 
 // Setup kafka producer client
-var kafka = require('kafka-node'),
-    Producer = kafka.Producer,
-    client = new kafka.Client(),
-    producer = new Producer(client);
+// var kafka = require('kafka-node'),
+//     Producer = kafka.Producer,
+//     client = new kafka.Client(),
+//     producer = new Producer(client);
 
-producer.on('error', function (err) {})
+// producer.on('error', function (err) {})
 
 var streamFilter = function(tweet) {
   console.log(chalk.green(tweet.user.screen_name, ' : ' , tweet.text));
-  request({
-    method: 'POST',
-    uri: 'http://127.0.0.1:5000/get_sent/',
-    form: {text: tweet.text},
-    json: true
-  },
-  function (error, response, body) {
-    if (error) {
-      return console.error(error);
-    }
+  // request({
+  //   method: 'POST',
+  //   uri: 'http://127.0.0.1:5000/get_sent/',
+  //   form: {text: tweet.text},
+  //   json: true
+  // },
+  // function (error, response, body) {
+  //   if (error) {
+  //     return console.error(error);
+  //   }
     
-    console.log(body);
+  //   console.log(body);
 
     // tweet.sentiment = body
     // const dataBuffer = Buffer.from(JSON.stringify(tweet));
@@ -51,7 +51,7 @@ var streamFilter = function(tweet) {
     // .catch((err)=>{
     //   chalk.red(JSON.stringify(err, null, 4))
     // })
-  })
+  //})
 };
 
 module.exports = streamFilter;
